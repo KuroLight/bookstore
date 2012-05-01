@@ -1,0 +1,26 @@
+<p id ="one_product">
+	<%= notice %>
+</p>
+
+<p>
+  <%= image_tag(@product.image_url, :class => 'list_image') %>
+</p>
+
+<p class="title">
+  <b>Title书名:</b>
+  <%= @product.title %>
+</p>
+
+<p>
+  <b>Description描述:</b>
+  <%= strip_tags(@product.description) %>
+</p>
+
+<p>
+  <b>Price价格:</b>
+  <%= @product.price %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
