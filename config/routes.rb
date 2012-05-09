@@ -1,4 +1,6 @@
 Bookstore::Application.routes.draw do
+  get "store/index"
+
   resources :products
 
   # The priority is based upon order of creation:
@@ -49,9 +51,14 @@ Bookstore::Application.routes.draw do
   #   end
 
   # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
+  # just remember to delete public/index.html.            <-----------remember to do this! -by TYF, 2012.05.09
+  # =>                                                     $ rm public/index.html
   # root :to => 'welcome#index'
-
+  
+  # add this by TYF, 2012.05.09
+  root :to => 'store#index', :as => 'store'
+  # end by TYF
+  
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
