@@ -5,6 +5,12 @@ class Product < ActiveRecord::Base
   #default_scope在这个model开始时将会应用到所有的查询中。
   default_scope :order => 'title'
   
+  # add by TFY, 2012.05.09
+  has_many :line_items
+
+  before_destroy :ensure_not_referenced_by_any_line_item
+  # end
+  
   # validation stuff...
   
   attr_accessible :description, :image_url, :price, :title
@@ -19,5 +25,19 @@ class Product < ActiveRecord::Base
   :with => %r{\.(gif|jpg|png)$}i,
   :message => 'must be a URL for GIF, JPG or PNG image.'
   }  
+  
+  # add by TFY, 2012.05.09
+  private
+
+    # ensure that there are no line items referencing this product
+    def ensure_not_referenced_by_any_line_item
+      if line_items.empty?
+        return true
+      else
+        errors.add(:base, 'Line Items present')
+        return false
+      end
+    end
+  # end
 end
 
