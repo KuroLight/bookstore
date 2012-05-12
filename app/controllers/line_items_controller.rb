@@ -45,12 +45,16 @@ class LineItemsController < ApplicationController
     # 下面这句有点问题！ by TYF, 2012.05.09
     # @line_item = @cart.line_items.build(:product => product)
     # 替换为下面这两句
-    @line_item = @cart.line_items.build
-    @line_item.product = product
+    # 第二次修改，删除下面两句，换成第三四句。 by TYF, 2012.05.10
+    # @line_item = @cart.line_items.build
+    # @line_item.product = product
+    @line_item = @cart.add_product(product.id)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart, :notice => 'Line item was successfully created.' }
+        # 删除添加Line Item时自动产生的flash消息
+        # format.html { redirect_to @line_item.cart, :notice => 'Line item was successfully created.' }
+        format.html { redirect_to(@line_item.cart) }
         format.json { render :json => @line_item, :status => :created, :location => @line_item }
       else
         format.html { render :action => "new" }
@@ -58,7 +62,7 @@ class LineItemsController < ApplicationController
       end
     end
   end
-
+  
   # PUT /line_items/1
   # PUT /line_items/1.json
   def update

@@ -74,10 +74,10 @@
 /* Styles for main page */
 #banner {
   background: #000;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   border-bottom: 2px solid;
-  font: small-caps 40px/40px bold "Times New Roman", serif;
+  font: small-caps 30pt/30pt "Times New Roman", serif; //9pt == 12px
   color: #e00;
   text-align: center;
 }
@@ -104,11 +104,12 @@
   padding-bottom: 1em;
   width: 10em;
   background: black;
+  
 }
 
 #side a {
   color: red;
-  font-size: 1em;// 1em == 16px
+  font-size: 1em;
 }
 /* END:mainlayout */
 
@@ -165,4 +166,19 @@
   display: inline;
 }
 /* END:inline */
+
+/* Styles for the cart in the main page */
+#store .cart_title {
+  font: 120% bold;
+}
+
+#store .item_price, #store .total_line {
+  text-align: right;
+}
+
+#store .total_line .total_cell {
+  font-weight: bold;
+  border-top: 1px solid #595;
+}
+
 
