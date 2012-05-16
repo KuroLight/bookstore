@@ -8,5 +8,6 @@
   </tr>
 
 </table>
+<%= button_to "Checkout下单！", new_order_path, :method => :get %>
 <%= button_to 'Empty cart 清空购物车！', cart, :method => :delete,
     :confirm => 'Are you sure? 你确定清空购物车？ ' %>

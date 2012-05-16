@@ -37,3 +37,7 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug'
+
+# add this by TYF, 2012.05.16
+gem 'will_paginate', '>= 3.0.pre'
+# end

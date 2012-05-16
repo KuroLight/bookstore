@@ -8,6 +8,9 @@ class LineItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :cart
   # end
+  # add by TFY, 2012.05.16
+  belongs_to :order
+  # end
   
   def total_price
     product.price * quantity

@@ -7,6 +7,9 @@ class Product < ActiveRecord::Base
   
   # add by TFY, 2012.05.09
   has_many :line_items
+  # add by TFY, 2012.05.16
+  has_many :orders, :through => :line_items
+
 
   before_destroy :ensure_not_referenced_by_any_line_item
   # end

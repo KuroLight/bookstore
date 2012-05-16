@@ -1,11 +1,17 @@
 Bookstore::Application.routes.draw do
+  resources :orders
+
   resources :line_items
 
   resources :carts
 
   get "store/index"
 
-  resources :products
+  # add this by TYF, 2012.05.16
+  resources :products do
+    get :who_bought, :on => :member
+  end
+  # end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
