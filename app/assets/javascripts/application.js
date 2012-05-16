@@ -13,3 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+// add by TYF, 2012,05,16
+//= require jquery-ui

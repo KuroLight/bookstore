@@ -54,7 +54,9 @@ class LineItemsController < ApplicationController
       if @line_item.save
         # 删除添加Line Item时自动产生的flash消息
         # format.html { redirect_to @line_item.cart, :notice => 'Line item was successfully created.' }
-        format.html { redirect_to(@line_item.cart) }
+        format.html { redirect_to(store_url) }
+        # format.js 查找create.js.rjs，但是rjs模版在3.2.2已经移除……所以看create.js.coffee里面实现！
+        format.js   { @current_item = @line_item}
         format.json { render :json => @line_item, :status => :created, :location => @line_item }
       else
         format.html { render :action => "new" }

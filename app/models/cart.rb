@@ -22,5 +22,10 @@ class Cart < ActiveRecord::Base
   def total_price
     line_items.to_a.sum { |item| item.total_price }
   end
+  
+  # 以下create.js.coffee本来要用到，但是有问题！
+  def total_items
+    line_items.sum(:quantity)
+  end
 
 end
