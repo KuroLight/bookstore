@@ -1,0 +1,19 @@
+<h3>Order Shipped</h3>
+<p>
+  This is just to let you know that we've shipped your recent order:
+</p>
+
+<table>
+  <tr><th colspan="2">Qty</th><th>Description</th></tr>
+<%= render @order.line_items %>
+</table>
+
+<h3>发货啦！</h3>
+<p>
+  告知您，我们已经发货啦！（在这里，我们用的是多样式邮件中的html）
+</p>
+
+<table>
+  <tr><th colspan="2">Qty</th><th>Description</th></tr>
+<%= render @order.line_items %>
+</table>
