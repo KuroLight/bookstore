@@ -41,3 +41,11 @@ gem 'jquery-rails'
 # add this by TYF, 2012.05.16
 gem 'will_paginate', '>= 3.0.pre'
 # end
+
+# add this for generate UML diagram, by TYF, 2012.05.28
+gem 'railroady'
+# end
+
+# add this for generate UML diagram, by TYF, 2012.05.28
+gem 'rails-erd'
+# end

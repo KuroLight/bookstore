@@ -10,18 +10,31 @@
 
 <body id="store" >
 	<div id="banner" >
-		<%= image_tag("logo.png") %>
-		<%= @page_title || "2hand-Bookstore" %>
+		<%= image_tag("logo_apple.png") %>
+		<%= @page_title || "The Bookworm" %>
 	</div>
 	<div id="columns" >
 		<div id="side" >      		
-			<a href="http://localhost:3000/" >Home</a><br />
-			<a href="http://www.google.com.hk" >Questions</a><br />
-			<a href="http://www.weibo.com" >News</a><br />
-			<a href="mailto:393323546@qq.com" >Contact</a><br />
-			<a href="http://my.ss.sysu.edu.cn/wiki/pages/viewpage.action?pageId=35913895" >About Us</a><br />
+			<a href="http://localhost:3000/" >Home首页</a><br />
+			<a href="http://www.google.com.hk" >Questions疑问</a><br />
+			<a href="http://www.weibo.com" >News新闻</a><br />
+			<a href="mailto:393323546@qq.com" >Contact联系我们</a><br />
+			<a href="http://my.ss.sysu.edu.cn/wiki/pages/viewpage.action?pageId=35913895" >About Us关于我们</a><br />
 			
-			<br></br>
+			<% if not session[:user_id] %>
+			<%= link_to 'Login登录', users_path %><br />
+			<% end %>
+			
+			<% if session[:user_id] %>
+		        <br />
+		        <%= link_to 'Orders订单',   orders_path   %><br />
+		        <%= link_to 'Products商品', products_path %><br />
+		        <%= link_to 'Users用户',    users_path    %><br />
+		        <br />
+	        	<%= button_to 'Logout退出登录', logout_path, :method => :delete   %>
+	      	<% end %>
+	      	
+			<br />
 			<div id="cart">
 				<% if @cart %>
 					<%= hidden_div_if(@cart.line_items.empty?, :id => "cart") do %>
