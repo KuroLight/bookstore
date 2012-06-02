@@ -58,10 +58,11 @@ module Bookstore
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     
-    # Fallback to assets pipeline if a precompiled asset is missed
-    config.assets.compile = true
-    
     config.assets.initialize_on_precompile = false
+    # Fallback to assets pipeline if a precompiled asset is missed
+    # config.assets.compile = true
+    
+    config.assets.precompile += ['scaffold.css', 'other.css', 'other.js']
 
   end
 end
