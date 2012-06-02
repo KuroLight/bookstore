@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class CartsController < ApplicationController
   # carts 不需要任何权限即可create/ update/ destroy
   skip_before_filter :authorize, :only => [:create, :update, :destroy]
