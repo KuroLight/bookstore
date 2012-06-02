@@ -60,6 +60,8 @@ module Bookstore
     
     # Fallback to assets pipeline if a precompiled asset is missed
     config.assets.compile = true
+    
+    config.assets.initialize_on_precompile = false
 
   end
 end
