@@ -14,7 +14,7 @@
   
   <fieldset>
   <legend>Enter User Details 确认用户详细信息</legend>
-
+  
   <div class="field">
     <%= f.label :name %>:
     <%= f.text_field :name, :size => 40 %>
@@ -27,7 +27,18 @@
     <%= f.label :password_confirmation, 'Confirm' %>:
     <%= f.password_field :password_confirmation, :size => 40 %>
   </div>
+  
+  <% if session[:user_id] and User.find(session[:user_id]).is_admin %>
+	<div>
+		<%= f.label :role, t('.role') %>:
+		<%= f.select :role,
+					User::ROLE_TYPES,
+					:prompt => t('.select') %>
+	</div>
+  <% end %>
+  
   <div class="actions">
+    <%= f.label :enter %>:
     <%= f.submit %>
   </div>
   </fieldset>

@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_filter :store_location
   # GET /products
   # GET /products.json
   def index

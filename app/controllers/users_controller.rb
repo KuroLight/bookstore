@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_filter :authorize, :only => [:index, :show, :new, :edit, :create, :update, :destroy]
+  before_filter :store_location
   # GET /users
   # GET /users.json
   def index
@@ -41,9 +43,22 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
+    
+    unless login_as_admin
+      @user.role = 'Register_User'       
+    end
+    
     respond_to do |format|
       if @user.save
+        # 在users_controller.rb的create函数中，判断并定义role
+        # by TYF, 2012, 05, 30
+        # if the user has been login, that means he's admin??? 这句话有点问题……
+        unless login_as_admin
+          session[:user_id] = @user.id           
+          format.html { redirect_to $last_url || store_url, :notice => "Signed up, User!" }
+          format.json { render :json => @user, :status => :created, :location => @user }          
+        end
+        # end
         format.html { redirect_to(users_url, :notice => "User #{@user.name} was successfully created.") }
         format.json { render :json => @user, :status => :created, :location => @user }
       else

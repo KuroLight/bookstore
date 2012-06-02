@@ -1,5 +1,8 @@
 class LineItemsController < ApplicationController
+  # line_items 不需要任何权限即可create
   skip_before_filter :authorize, :only => :create
+  skip_before_filter :admin_authorize, :only => :create
+  before_filter :store_location
 
   # GET /line_items
   # GET /line_items.json

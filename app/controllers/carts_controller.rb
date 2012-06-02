@@ -1,5 +1,8 @@
 class CartsController < ApplicationController
+  # carts 不需要任何权限即可create/ update/ destroy
   skip_before_filter :authorize, :only => [:create, :update, :destroy]
+  skip_before_filter :admin_authorize, :only => [:create, :update, :destroy]
+  before_filter :store_location
 
   # GET /carts
   # GET /carts.json

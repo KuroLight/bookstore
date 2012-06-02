@@ -1,5 +1,8 @@
 class OrdersController < ApplicationController
+  # orders 不需要任何权限即可new/ create
   skip_before_filter :authorize, :only => [:new, :create]
+  skip_before_filter :admin_authorize, :only => [:new, :create]
+  before_filter :store_location
 
   # GET /orders
   # GET /orders.json
@@ -55,7 +58,7 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        Notifier.order_received(@order).deliver
+        # Notifier.order_received(@order).deliver
         format.html { redirect_to(store_url, :notice => 'Thank you for your order.谢谢惠顾！') }
         format.json { render :json => @order, :status => :created, :location => @order }
       else

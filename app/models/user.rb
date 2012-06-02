@@ -1,10 +1,7 @@
 require 'digest/sha2'
   
 class User < ActiveRecord::Base
-  #必须保留以下属性
-  attr_accessible :name, :password, :password_confirmation
-  #end
-  
+  attr_accessible :user_id
   validates :name, :presence => true, :uniqueness => true
  
   validates :password, :confirmation => true
@@ -12,6 +9,25 @@ class User < ActiveRecord::Base
   attr_reader   :password
 
   validate  :password_must_be_present
+  
+  # add by TFY, 2012.06.02, 但是还没实现每个用户查看自己的订单信息
+  has_many :orders, :dependent => :destroy
+  # end
+  
+  # 定义ROLE_TYPES
+  # by TYF, 2012, 05, 30
+  ROLE_TYPES = ["Administrator", "Register_User"]
+  # end
+  
+  # 判断是管理员Administrator还是普通用户（买家）Register_User
+  # by TYF, 2012, 05, 30
+  def is_admin
+    role == 'Administrator'
+  end
+  def is_user
+    role == 'Register_User'
+  end  
+  # end
   
   def User.authenticate(name, password)
     if user = find_by_name(name)

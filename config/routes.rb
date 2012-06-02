@@ -1,12 +1,14 @@
 Bookstore::Application.routes.draw do
-  get "admin/index"
-
   get 'admin' => 'admin#index'
 
   controller :sessions do
-    get  'login' => :new
-    post 'login' => :create
-    delete 'logout' => :destroy
+    # 创建一个signup路径，同时将signup与new user页面关联起来,
+    # by TYF, 2012, 05, 30
+    get     'signup' => :sign_up
+    # end
+    get     'login'   => :new
+    post    'login'   => :create
+    delete  'logout'  => :destroy
   end
   # get "admin/index"
 # 
