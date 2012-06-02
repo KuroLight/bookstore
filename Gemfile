@@ -49,3 +49,9 @@ gem 'railroady'
 # add this for generate UML diagram, by TYF, 2012.05.28
 gem 'rails-erd'
 # end
+
+# gems specifically for Heroku go here
+group :production do
+   gem 'pg'
+end
+

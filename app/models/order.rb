@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Order < ActiveRecord::Base
   attr_accessible :address, :email, :name, :pay_type
   PAYMENT_TYPES = [ "Cash现金", "Alipay支付宝", "Free霸王书！" ]

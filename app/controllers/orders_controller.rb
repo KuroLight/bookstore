@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class OrdersController < ApplicationController
   # orders 不需要任何权限即可new/ create
   skip_before_filter :authorize, :only => [:new, :create]
