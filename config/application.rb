@@ -63,6 +63,8 @@ module Bookstore
     # config.assets.compile = true
     
     config.assets.precompile += ['scaffold.css', 'other.css', 'other.js']
+    
+    config.assets.debug = false
 
   end
 end
