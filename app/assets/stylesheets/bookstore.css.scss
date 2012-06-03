@@ -2,7 +2,7 @@
 
 #store #notice {
         color: #fff;
-        border: 2px solid red;
+        border: 2px solid black;
         padding: 1em;
         margin-bottom: 2em;
         background-color: #f0f0f0;
@@ -73,21 +73,29 @@
 /* START:mainlayout */
 /* Styles for main page */
 #banner {
-  background: #000;
+  background: white;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   border-bottom: 2px solid;
-  font: small-caps 30pt/30pt "Times New Roman", serif; //9pt == 12px
-  color: #e00;
+  font: small-caps 35pt/35pt "Times New Roman", serif; //9pt == 12px
+  color: black;
   text-align: center;
+}
+
+#banner subtitle {
+  font: small-caps 25pt/25pt "Times New Roman", serif;
 }
 
 #banner img {
   float: left;
+  height: 100px;
+  margin-top: -10px;
+  width:80px;
+  margin-left: 45px;
 }
 
 #columns {
-  background: black;
+  background: white;
 }
 
 #main {
@@ -103,13 +111,17 @@
   padding-left: 1em;
   padding-bottom: 1em;
   width: 15em;
-  background: black;
+  background: white;
   
 }
 
 #side a {
-  color: red;
+  color: black;
   font-size: 1em;
+}
+
+#side a:hover {
+  background-color: #F0FFF0;
 }
 /* END:mainlayout */
 
@@ -185,7 +197,7 @@
 /* Styles for the cart in the sidebar */
 #cart, #cart table {
   font-size: smaller;
-  color:     white;
+  color:     #226;
 }
 
 #cart table {

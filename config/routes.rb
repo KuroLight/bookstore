@@ -4,7 +4,10 @@ Bookstore::Application.routes.draw do
   controller :sessions do
     # 创建一个signup路径，同时将signup与new user页面关联起来,
     # by TYF, 2012, 05, 30
-    get     'signup' => :sign_up
+    # link_to就用get
+    # get     'signup' => :sign_up
+    # button_to就用post
+    post     'signup' => :sign_up
     # end
     get     'login'   => :new
     post    'login'   => :create
