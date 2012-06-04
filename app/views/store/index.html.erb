@@ -11,8 +11,11 @@
 		<%= sanitize(product.description) %>
 		<div class="price_line" >
 			<span class="price" ><%= number_to_currency(product.price) %></span>
-			<%= button_to 'Add to Cart 添加至购物车', line_items_path(:product_id => product), :remote => true %>
-			
+<!-- 	由于heroku托管ajax无法使用，所以将这个局部刷新删除，变为主动刷新整个主页，
+	P.S.删了之后意外的，不受heroku配置影响，不再重复增加商品
+	但是，删除购物车的重复提示依然存在，继续检查 By TYF, 2012.06.04 -->
+<!-- 			<%= button_to 'Add to Cart 添加至购物车', line_items_path(:product_id => product), :remote => true %> -->
+			<%= button_to 'Add to Cart 添加至购物车', line_items_path(:product_id => product) %>
 		</div>
 	</div>
 <% end %>

@@ -29,16 +29,17 @@
 			<% end %>
 			
 	      	<% if session[:user_id] %>
-		        <br /><a><%= 'Welcome Back! ' + User.find(session[:user_id]).name %></a>
-		        <br /><a><%= 'I know U are ' + User.find(session[:user_id]).role %></a>  
+		        <br /><%= 'Welcome Back! ' + User.find(session[:user_id]).name %>
+		        <br /><%= 'I know U are ' + User.find(session[:user_id]).role %>  
 		        <br /><%= button_to 'Logout', logout_path, :method => :delete   %>
 	      	<% end %>
 	      	
 	      	<% if session[:user_id] and User.find(session[:user_id]).is_admin %>
 		        <br />
-		        <%= link_to 'Orders',   orders_path   %><br />
-		        <%= link_to 'Products', products_path %><br />
-		        <%= link_to 'Users',    users_path    %><br />
+		        <%= '后台管理（仅管理员可见）：' %><br />
+		        <%= link_to 'Orders 订单列表',   orders_path   %><br />
+		        <%= link_to 'Products 商品列表', products_path %><br />
+		        <%= link_to 'Users 用户列表',    users_path    %><br />
 	      	<% end %>
 	      	
 			<br />

@@ -1,9 +1,10 @@
 <h1>Welcome! 欢迎光临！</h1>
 
-It's <%= Time.now %>
+<p>It's <%= Time.now %><br />
 We have <%= pluralize(@total_orders, "order") %>.
+</p>
 
-<br />
-
-现在是北京时间： <%= Time.now %>
-我们有： <%= pluralize(@total_orders, "order") %>.
+<p>现在是北京时间： <%= Time.now %><br />
+<!-- 我们有： <%= pluralize(@total_orders, "个订单") %>. -->
+很高兴，我们已经有<%= @total_orders %>个订单了！
+</p>
