@@ -23,15 +23,19 @@
 			<a href="http://my.ss.sysu.edu.cn/wiki/pages/viewpage.action?pageId=35913895" >About Us 关于项目</a><br />
 			
 			<% if not session[:user_id] %><br />
-				<%= button_to 'Login', login_path %>
-				<%= button_to 'Sign up', signup_path %><br />			
+			<p>
+				<%= link_to 'Login登录', login_path %><br />
+				<%= link_to 'Sign up注册', signup_path %><br />			
 				<!-- <br /><br /><a href="/users" >跨越管理员权限查看用户列表，慎用！</a><br /> -->
+			</p>				
 			<% end %>
 			
 	      	<% if session[:user_id] %>
-		        <br /><%= 'Welcome Back! ' + User.find(session[:user_id]).name %>
+	      	<p>
+	      		<br /><%= 'Welcome Back! ' + User.find(session[:user_id]).name %>
 		        <br /><%= 'I know U are ' + User.find(session[:user_id]).role %>  
-		        <br /><%= button_to 'Logout', logout_path, :method => :delete   %>
+		        <br /><%= link_to 'Logout退出登录', logout_path, :method => :delete   %>
+	      	</p>		        
 	      	<% end %>
 	      	
 	      	<% if session[:user_id] and User.find(session[:user_id]).is_admin %>

@@ -4,10 +4,10 @@ Bookstore::Application.routes.draw do
   controller :sessions do
     # 创建一个signup路径，同时将signup与new user页面关联起来,
     # by TYF, 2012, 05, 30
-    # link_to就用get
-    # get     'signup' => :sign_up
-    # button_to就用post
-    post     'signup' => :sign_up
+    # link_to就用get 
+    get     'signup' => :sign_up
+    # button_to就用post, 但是post是有问题的,get和post不同，这是下面login有两个的原因
+    # post     'signup' => :sign_up
     # end
     get     'login'   => :new
     post    'login'   => :create
